@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>BowlingLane.qml</file>
+        <file>boom.png</file>
+        <file>qtquickcontrols2.conf</file>
+    </qresource>
+</RCC>
