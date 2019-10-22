@@ -18,9 +18,9 @@ ApplicationWindow {
     footer: ToolBar{
         ToolButton{
             anchors.horizontalCenter: parent.horizontalCenter
-            text: game.playersNumber ? "Next" : "Open File"
+            text: game.playersNumber > 0 ? "Next" : "Open File"
             onClicked: {
-                if(game.playersNumber){
+                if(game.playersNumber > 0){
                     game.next()
                 }else{
                     fileDialog.open()
@@ -31,7 +31,6 @@ ApplicationWindow {
 
     ColumnLayout{
         id: playersLayout
-        //height: parent.height
         anchors{
             top: parent.top
             left: parent.left
@@ -67,12 +66,6 @@ ApplicationWindow {
                                 id: frameLabel
                                 property int frame: modelData
                                 visible: game.currentFrame > modelData
-                                Connections{
-                                    target: game
-                                    onScoreChanged:{
-                                        frameLabel.text = "Frame " + (frame + 1) + ": " + game.result(frameLabel.frame, playerPage.player)
-                                    }
-                                }
                             }
                         }
                     }
@@ -117,7 +110,7 @@ ApplicationWindow {
     Connections{
         target: game
 
-        onKnockedDown:{
+        onStepMade:{
             bowlingLine.run(player, pins)
         }
         onGameOver:{

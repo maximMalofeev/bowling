@@ -27,7 +27,8 @@ else()
 
     set(src "src/main.cpp"
         "src/input.h" "src/input.cpp"
-        "src/game.h" "src/game.cpp")
+        "src/game.h" "src/game.cpp"
+        "src/game_backend.h" "src/game_backend.cpp")
 
     if(ANDROID)
         add_library(bowling SHARED ${src} "qml/qml.qrc")
